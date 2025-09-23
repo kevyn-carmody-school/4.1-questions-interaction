@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <script src="https://aframe.io/releases/1.7.0/aframe.min.js"></script>
+        
+        <meta charset="utf-8">
+        <title>A-Frame with Countdown and Background Music</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        
+<style>
+      body { margin: 0; overflow: hidden; }
+
+      #start-button {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        padding: 1em 2em;
+        font-size: 1.5em;
+        background: #222;
+        color: white;
+        border: none;
+        cursor: pointer;
+        z-index: 10;
+      }
+
+      #countdown {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        font-size: 8em;
+        font-weight: bold;
+        color: white;
+        display: none;
+        z-index: 9;
+        text-shadow: 4px 4px 10px rgba(0,0,0,0.7);
+      }
+    </style>
+
+
+        
+    </head>
+    <body>
+
+        <!-- Audio element -->
+        <audio id="bg-music" loop>
+          <source src="https://raw.githubusercontent.com/kevyn-carmody-school/4.1-questions-interaction/refs/heads/main/gamemusic.mp3" type="audio/mpeg">
+          Your browser does not support the audio element.
+        </audio>
+    
+        <!-- UI elements -->
+        <button id="start-button">Start Experience</button>
+        <div id="countdown">3</div>
+        
+        <a-scene>
+            <a-camera><a-cursor></a-cursor></a-camera>
+            <a-sky color="white"></a-sky>
+        <a-box
+            position="0 1 -5"
+            depth="2"
+            height="2"
+            width="2"
+            animation="
+                property: position;
+                from: 0 0 30;
+                to: 0 -10 -30;
+                dur: 2000;
+                easing: easeOutExpo;
+                loop: true;
+                dir: alternate;
+            "
+            animation__2="
+            property: scale;
+            from: 1 1 1;
+            to: 0 0 0;
+            startEvents: click;
+            "
+            color="tomato">
+        </a-box>
+        <a-plane rotation="-90 0 0" width="100" height="100" color="blue" opacity="0.5" animation__2="
+            property: scale;
+            from: 1 1 1;
+            to: 0 0 0;
+            startEvents: click;
+            "></a-plane>
+        <a-plane rotation="-90 0 0" width="1000" height="1000" color="black" opacity="1" position="0 -100 0" animation__2="
+            property: scale;
+            from: 1 1 1;
+            to: 0 0 0;
+            startEvents: click;
+            "></a-plane>
+            
+        <a-cylinder color="yellow" position="0 5 -10" height="2" radius="0.5" rotation="0 0 -90 "
+        animation="
+        property: position;
+        from: 20 -5 -10;
+        to: -20 -5 -10;
+        loop: true;
+        easing: easeInQuad;
+        dir: alternate;
+        dur: 1000;
+        pauseEvents: click;
+        "
+        animation__2="
+        property: scale;
+        from: 1 1 1;
+        to: 0 0 0;
+        startEvents: click;
+        "
+        ></a-cylinder>
+        <a-torus position="0 -5 -10" color="green" arc="360" radius="3" radius-tubular=".2"
+        animation="
+        property: rotation;
+        from: 0 0 0;
+        to: 360 360 360;
+        loop: true;
+        dur: 1500;
+        easing: linear;
+        dir: alternate;
+        "
+        animation__2="
+        property: scale;
+        from: 1 1 1;
+        to: 0 0 0;
+        startEvents: click;
+        "
+        animation__3="
+        property: position;
+        from: 0 -10 -10;
+        to: 0 5 -10;
+        dur: 2500;
+        loop: true;
+        dir: alternate;
+        easing: easeOutQuart;
+        "
+        ></a-torus>
+        
+        <a-sphere color="yellow" radius="5" position="-5 10 -10"
+        animation="
+        property:opacity;
+        from: 1;
+        to: 0;
+        loop: true;
+        dir: alternate;
+        dur: 3000;
+        easing: easeInSine;
+        "
+        animation__2="
+        property: scale;
+        from: 1 1 1;
+        to: 0 0 0;
+        startEvents: click;
+        "
+        animation__3="
+        property: position;
+        from: -15 10 -10;
+        to: 30 10 -20;
+        loop: true;
+        dir: alternate;
+        dur: 10000;
+        easing: easeInOutCirc;
+        "
+        ></a-sphere>
+        <a-octahedron position="0 -5 -10" color="purple"
+        animation="
+        property: scale;
+        from:0.1 0.3 0.6;
+        to: 3 3 3;
+        dir: alternate;
+        easing: easeInOutElastic;
+        loop: true;
+        dur: 5000;
+        "
+        animation__2="
+        property: scale;
+        from: 1 1 1;
+        to: 0 0 0;
+        startEvents: click;
+        "
+        animation__3="
+        property: rotation;
+        from: 0 0 0;
+        to: 0 360 0;
+        dir: alternate;
+        loop: true;
+        dur: 5000;
+        easing: easeInOutElastic;
+        "
+        animation__4="
+        property: position;
+        from: 0 -5 -10;
+        to: 0 15 -10;
+        dir: alternate;
+        loop: true;
+        dur: 5000;
+        easing: easeOutQuad;
+        "
+        animation__5="
+        delay: 5000;
+        property: scale;
+        from: 3 3 3;
+        to:0.1 0.3 0.6;
+        dir: alternate;
+        easing: easeInOutElastic;
+        loop: true;
+        dur: 5000;
+        "
+        ></a-octahedron>
+        
+        </a-scene>
+
+        <!-- JavaScript -->
+        <script>
+          const music = document.getElementById('bg-music');
+          const startBtn = document.getElementById('start-button');
+          const countdownEl = document.getElementById('countdown');
+    
+          startBtn.addEventListener('click', () => {
+            startBtn.style.display = 'none';
+            startCountdown();
+          });
+    
+          function startCountdown() {
+            let count = 3;
+            countdownEl.style.display = 'block';
+            countdownEl.textContent = count;
+    
+            const interval = setInterval(() => {
+              count--;
+              if (count > 0) {
+                countdownEl.textContent = count;
+              } else {
+                clearInterval(interval);
+                countdownEl.style.display = 'none';
+                music.play();
+              }
+            }, 1000);
+          }
+        </script>
+
+        
+    </body>
+</html>
